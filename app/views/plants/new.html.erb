@@ -1,0 +1,21 @@
+<div class="garden">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+  <%= @garden.image_url%>)">
+    Add a plant to <%= @garden.name %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card mt-3">
+    <div class="card-body">
+    <%= simple_form_for [@garden, @plant] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :specy %>
+      <%= f.input :image_url %>
+
+      <%= link_to 'Cancel', garden_path(@garden), class:'btn btn-link' %>
+      <%= f.submit class:'btn btn-primary' %>
+    <% end %>
+    </div>
+  </div>
+</div>

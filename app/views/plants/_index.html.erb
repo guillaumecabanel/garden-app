@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <div class="cards">
+    <% @garden.plants.each do |plant| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plant.image_url %>)">
+        <%= plant.name %>
+        <%= link_to 'cut', plant_path(plant), method: :delete, class: 'delete-button' %>
+      </div>
+
+    <% end %>
+
+    <%= link_to new_garden_plant_path(@garden), class: "card-category", style:"background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(http://jonlieffmd.com/wp-content/uploads/2015/01/FEATURE-Big-Stock-Plant-New-Life-.jpg)" do %>
+        Add a plant
+    <% end %>
+  </div>
+</div>
