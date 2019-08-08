@@ -1,4 +1,12 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plant.image_url %>)">
   <%= plant.name %>
+
+  <div class="tags">
+    <% plant.tags.each do |tag| %>
+      <div class="tag"><%= tag.title %></div>
+    <% end %>
+  </div>
+
+  <%= link_to 'Add a tag', new_plant_plant_tag_path(plant), class: 'btn btn-primary btn-sm add-tag-button' %>
   <%= link_to 'cut', plant_path(plant), method: :delete, class: 'delete-button' %>
 </div>

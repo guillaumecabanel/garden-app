@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_07_155155) do
+ActiveRecord::Schema.define(version: 2019_08_08_154227) do
 
   create_table "gardens", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2019_08_07_155155) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "plant_tags", force: :cascade do |t|
+    t.integer "plant_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_plant_tags_on_plant_id"
+    t.index ["tag_id"], name: "index_plant_tags_on_tag_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -28,6 +37,12 @@ ActiveRecord::Schema.define(version: 2019_08_07_155155) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["garden_id"], name: "index_plants_on_garden_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
